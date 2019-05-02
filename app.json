@@ -22,6 +22,7 @@
       ]
     },
     "ios": {
+      "bundleIdentifier":"com.hng5_apoe4-ios-app.expo.googlesignin",
       "supportsTablet": true
     }
   }
