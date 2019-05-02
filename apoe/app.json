@@ -23,11 +23,11 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier":"com.hng.apoe4-ios",
+      "bundleIdentifier":"host.exp.exponent",
       "supportsTablet": true,
       "config": {
         "googleSignIn": {
-          "reservedClientId": "com.googleusercontent.apps.376542755138-r0h1n3bbgj859rf7rbrl7c47euh0khia"
+          "reservedClientId": "com.googleusercontent.apps.145923234526-slj76laq2n77q3i22m0n5jm4eka515b0"
         }
       }
     }

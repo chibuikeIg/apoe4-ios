@@ -7,10 +7,10 @@ import {
   Image,
   Text,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  AsyncStorage
 } from "react-native";
 import { Google } from "expo";
-// import { authorize } from "react-native-app-auth";
 const wS = Dimensions.get("window");
 const dh = wS.height;
 const dw = wS.width;
@@ -35,15 +35,27 @@ export default class SignIn extends React.Component {
     try {
       const clientId = {
         clientId:
-          "376542755138-r0h1n3bbgj859rf7rbrl7c47euh0khia.apps.googleusercontent.com"
+          "145923234526-slj76laq2n77q3i22m0n5jm4eka515b0.apps.googleusercontent.com"
       };
       const { type, accessToken, user } = await Google.logInAsync(clientId);
       if (type === "success") {
         /* `accessToken` is now valid and can be used to get data from the Google API with HTTP requests */
-        console.log(user);
+        await this._bootstrapAsync(accessToken);
+        // console.log(user);
       }
     } catch ({ message }) {
       alert("GoogleSignIn.initAsync(): " + message);
+    }
+  };
+
+  _bootstrapAsync = async token => {
+    try {
+      await AsyncStorage.setItem("userToken", token);
+      return this.props.navigation.navigate("Main");
+    } catch (error) {
+      // This will switch to the App screen or Auth screen and this loading
+      // screen will be unmounted and thrown away.
+      alert(error);
     }
   };
 
