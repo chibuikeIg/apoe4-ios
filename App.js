@@ -1,21 +1,35 @@
-import React, {Component} from 'react';
-import {Platform, StyleSheet,View, StatusBar,Dimensions,
-        TouchableOpacity,} from 'react-native';
-import AppContainer from './components/Navigator'
+// Use this screen to load any assets
+
+// this is the app navigotor component set in the navigation folder... do not delete this!
+import AppNavigator from "./navigation/AppNavigator";
+import React from "react";
+import { Asset, AppLoading } from "expo";
 
 export default class App extends React.Component {
+  state = {
+    isReady: false
+  };
+
   render() {
-    return (
-      <View style={styles.container}>
-      <StatusBar translucent backgroundColor="#606060" barStyle="dark-content" />
-      <AppContainer />
-      </View>
-    );
+    if (!this.state.isReady) {
+      return (
+        <AppLoading
+          startAsync={this._cacheResourcesAsync}
+          onFinish={() => this.setState({ isReady: true })}
+          onError={console.warn}
+        />
+      );
+    }
+
+    return <AppNavigator />;
+  }
+
+  async _cacheResourcesAsync() {
+    const images = [require("./assets/fb.png"), require("./assets/logo.png")];
+
+    const cacheImages = images.map(image => {
+      return Asset.fromModule(image).downloadAsync();
+    });
+    return Promise.all(cacheImages);
   }
 }
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-
-});

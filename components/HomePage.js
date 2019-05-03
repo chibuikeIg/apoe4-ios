@@ -61,7 +61,7 @@ export default class HomePage extends React.Component {
 
           </View>
 
-        <ScrollView style={{flex:1, alignItems:'center'}}>
+        <ScrollView contentContainerStyle={{flex:1, alignItems:'center'}}>
           <View style={{marginTop:hh(40), flexDirection:'row'}}>
             <Image source={require('../assets/fb.png')} style={{width:ww(20),height:ww(20), borderRadius:ww(10)}} />
             <Text style={{fontSize:ww(18),fontWeight:'bold',color:'#676767'}}>How are you Today?</Text>
