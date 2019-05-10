@@ -7,10 +7,8 @@ import {
   Image,
   Text,
   TextInput,
-  TouchableOpacity,
-  AsyncStorage
+  TouchableOpacity
 } from "react-native";
-import { Google } from "expo";
 const wS = Dimensions.get("window");
 const dh = wS.height;
 const dw = wS.width;
@@ -30,34 +28,6 @@ export default class SignIn extends React.Component {
       currentPage: "signin"
     };
   }
-
-  gsignIn = async () => {
-    try {
-      const clientId = {
-        clientId:
-          "145923234526-slj76laq2n77q3i22m0n5jm4eka515b0.apps.googleusercontent.com"
-      };
-      const { type, accessToken, user } = await Google.logInAsync(clientId);
-      if (type === "success") {
-        /* `accessToken` is now valid and can be used to get data from the Google API with HTTP requests */
-        await this._bootstrapAsync(accessToken);
-        // console.log(user);
-      }
-    } catch ({ message }) {
-      alert("GoogleSignIn.initAsync(): " + message);
-    }
-  };
-
-  _bootstrapAsync = async token => {
-    try {
-      await AsyncStorage.setItem("userToken", token);
-      return this.props.navigation.navigate("Main");
-    } catch (error) {
-      // This will switch to the App screen or Auth screen and this loading
-      // screen will be unmounted and thrown away.
-      alert(error);
-    }
-  };
 
   renderLogin() {
     return (
@@ -129,7 +99,7 @@ export default class SignIn extends React.Component {
                 fontWeight: "500"
               }}
             >
-              Forgot Password ?
+              Forgot Password?
             </Text>
           </View>
         </View>
@@ -179,7 +149,9 @@ export default class SignIn extends React.Component {
               justifyContent: "space-between"
             }}
           >
-            <TouchableOpacity style={styles.btn} onPress={() => this.gsignIn()}>
+            <TouchableOpacity
+              style={styles.btn}
+            >
               <Image
                 source={require("../../assets/google.png")}
                 style={{
@@ -188,6 +160,7 @@ export default class SignIn extends React.Component {
                 }}
               />
             </TouchableOpacity>
+
             <TouchableOpacity style={styles.btn}>
               <Image
                 source={require("../../assets/fb.png")}
@@ -199,6 +172,7 @@ export default class SignIn extends React.Component {
             </TouchableOpacity>
           </View>
         </View>
+
         <View
           style={{
             display: "flex",
@@ -216,7 +190,7 @@ export default class SignIn extends React.Component {
               color: "#676767"
             }}
           >
-            Dont have an account ?
+            Dont have an account?
           </Text>
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate("Join")}

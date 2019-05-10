@@ -1,17 +1,17 @@
 import React from "react";
 import {
   ActivityIndicator,
-  AsyncStorage,
   StatusBar,
-  StyleSheet,
   View
 } from "react-native";
+import AsyncStorage from "@react-native-community/async-storage";
 
 export default class AuthLoadingScreen extends React.Component {
   constructor(props) {
     super(props);
     this._bootstrapAsync();
   }
+  
 
   // Fetch the token from storage then navigate to our appropriate place
   _bootstrapAsync = async () => {

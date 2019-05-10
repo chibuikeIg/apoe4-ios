@@ -1,35 +1,38 @@
-// Use this screen to load any assets
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow
+ */
 
-// this is the app navigotor component set in the navigation folder... do not delete this!
-import AppNavigator from "./navigation/AppNavigator";
-import React from "react";
-import { Asset, AppLoading } from "expo";
+import React, { Component } from "react";
+import { StyleSheet, View, StatusBar } from "react-native";
+import SplashScreen from "react-native-splash-screen";
+import AppContainer from "./navigation/AppNavigator";
 
-export default class App extends React.Component {
-  state = {
-    isReady: false
-  };
+type Props = {};
 
-  render() {
-    if (!this.state.isReady) {
-      return (
-        <AppLoading
-          startAsync={this._cacheResourcesAsync}
-          onFinish={() => this.setState({ isReady: true })}
-          onError={console.warn}
-        />
-      );
-    }
-
-    return <AppNavigator />;
+export default class App extends Component<Props> {
+  componentDidMount() {
+    SplashScreen.hide();
   }
-
-  async _cacheResourcesAsync() {
-    const images = [require("./assets/fb.png"), require("./assets/logo.png")];
-
-    const cacheImages = images.map(image => {
-      return Asset.fromModule(image).downloadAsync();
-    });
-    return Promise.all(cacheImages);
+  render() {
+    return (
+      <View style={styles.container}>
+        <StatusBar
+          translucent
+          backgroundColor="#606060"
+          barStyle="dark-content"
+        />
+        <AppContainer />
+      </View>
+    );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  }
+});

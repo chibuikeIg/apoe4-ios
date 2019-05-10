@@ -1,13 +1,17 @@
-import React, {Component} from 'react';
-import {Platform, StyleSheet,View, StatusBar,Dimensions,Image,Text,ScrollView,
-        TouchableOpacity,} from 'react-native';
-import Pie from 'react-native-fab-pie';
-import { FontAwesome } from '@expo/vector-icons';
-var wS = Dimensions.get('window');
-var dh = wS.height;
-var dw = wS.width;
-function hh(h){return (dh*h)/670}
-function ww(w){return (dw*w)/375}
+import React, { Component } from "react";
+import { View, Dimensions, Image } from "react-native";
+import Pie from "react-native-fab-pie";
+
+const wS = Dimensions.get("window");
+const dh = wS.height;
+const dw = wS.width;
+const hh = h => {
+  return (dh * h) / 670;
+};
+const ww = w => {
+  return (dw * w) / 375;
+};
+
 
 export default class SleepPie extends React.Component {
    constructor(props) {

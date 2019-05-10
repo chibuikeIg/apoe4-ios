@@ -6,12 +6,12 @@ import {
 } from "react-navigation";
 
 import TabBarIcon from "../components/TabBarIcon";
-import HomePage from "../components/HomePage";
+import HomeScreen from "../components/HomePage";
 import LinksScreen from "../components/LinksScreen";
 import SettingsScreen from "../components/SettingsScreen";
 
 const HomeStack = createStackNavigator({
-  Home: HomePage
+  Home: HomeScreen
 });
 
 HomeStack.navigationOptions = {

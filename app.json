@@ -1,35 +1,4 @@
 {
-  "expo": {
-    "name": "APOE",
-    "slug": "apoe",
-    "privacy": "public",
-    "sdkVersion": "32.0.0",
-    "platforms": [
-      "ios",
-      "android"
-    ],
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "splash": {
-      "image": "./assets/Splash.png",
-      "resizeMode": "cover",
-      "backgroundColor": "#032476"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "bundleIdentifier":"host.exp.exponent",
-      "supportsTablet": true,
-      "config": {
-        "googleSignIn": {
-          "reservedClientId": "com.googleusercontent.apps.145923234526-slj76laq2n77q3i22m0n5jm4eka515b0"
-        }
-      }
-    }
-  }
+  "name": "apoe4ios",
+  "displayName": "apoe4ios"
 }

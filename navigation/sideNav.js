@@ -1,14 +1,14 @@
 import React from "react";
-import Icon from "@expo/vector-icons/Ionicons";
+import Icon from "react-native-vector-icons/Ionicons";
 
 import { createDrawerNavigator, createStackNavigator } from "react-navigation";
 
-import sideMenu from "../components/sidemenu";
+import sideMenu from "../screens/sidemenu";
 import DashboardTabNavigator from "./MainTabNavigator";
 
 const DashboardStackNavigator = createStackNavigator(
   {
-    DashboardTabNavigator: DashboardTabNavigator
+    DashboardTabNavigator
   },
   {
     defaultNavigationOptions: ({ navigation }) => {
